@@ -9,7 +9,7 @@ fprintf('%s\t Start SQL connection.\n\n',datestr(now));
 
 
 %%
-for n = 3:length(filelist)-2
+for n = 10:11
     
     filename = strcat('BIN/',filelist(n).name);
     
@@ -17,6 +17,8 @@ for n = 3:length(filelist)-2
     
     load(filename,'Seen');
     Seen = sort(Seen);
+    Seen = Seen(2:end);
+%     Seen = {'AHR2'};
     
     Labels = load(filename,'*_label');
     [cursor] = createTableMySQL(conn,Seen,Labels);
